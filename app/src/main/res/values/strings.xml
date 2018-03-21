@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Whistlr</string>
+    <string name="password_hint">Password</string>
+    <string name="name_hint">Name</string>
+    <string name="a_whistle_content_description">a whistle</string>
+    <string name="signup_login">Signup/Login</string>
 </resources>
