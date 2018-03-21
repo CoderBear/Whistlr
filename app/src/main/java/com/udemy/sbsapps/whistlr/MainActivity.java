@@ -1,5 +1,6 @@
 package com.udemy.sbsapps.whistlr;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
         String title = "Whistlr: Login";
         setTitle(title);
+//        redirectUser();
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
     }
@@ -37,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
             public void done(ParseUser user, ParseException e) {
                 if(e == null) {
                     Log.i("Login", "Success!");
+                    redirectUser();
                 } else {
                     e.printStackTrace();
                     ParseUser newUser = new ParseUser();
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                         public void done(ParseException e) {
                             if(e == null) {
                                 Log.i("Signup", "Success!");
+                                redirectUser();
                             } else {
                                 Toast.makeText(MainActivity.this, e.getMessage().substring(e.getMessage().indexOf(" ")), Toast.LENGTH_SHORT).show();
                             }
@@ -56,5 +60,10 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void redirectUser() {
+        Intent intent = new Intent(getApplicationContext(), UsersActivity.class);
+        startActivity(intent);
     }
 }
